@@ -19,7 +19,14 @@ The system consists of three main components:
 ```
 add diagram eventuallu
 ```
+### How to Run the Demo
 
+1.  **Get an ngrok Authtoken:** Sign up for a free account at [ngrok.com](https://ngrok.com) and get your token.
+2.  **Open the Colab Notebook:** The entire demo is contained in a single, self-contained notebook.
+    * **[Click here to open the example notebook.](Colab_to_WebGPU_infra.ipynb)**
+3.  **add token to secrets** add tokens to secret section in ngrok
+4.  **Launch the Worker:** Click the link to open the worker in your browser on a device. Working amd gen 5 and iphone 17 from my own testings.
+5.  **Run the Job:** Go back to the notebook and run the final cells to see it work!
 
 ---
 
