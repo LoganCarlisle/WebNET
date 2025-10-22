@@ -32,7 +32,7 @@ add diagram eventuallu
 
 ## Project Status
 
-Since I cant use metal currently trying to create a proof of concept using webgpu.
+got some infra working, need to scale up now to multiple devices safely ngrok is broker needs to be swapped, and webgpu probaly needs a engine swap to metal for iphones ect, then various functions to train with other probaly need to implement a credit system then but first get a couple devices connected and running infra together or sum.
 
 ### How to Run the Demo
 
