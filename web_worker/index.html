@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebNET - Web Worker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js"></script>
+</head>
+<body>
+    <h1>WebNET - Web Worker</h1>
+    <div id="status-box" class="disconnected">Disconnected</div>
+    <div id="status-row">
+        <div class="status-pill" id="model-status">Model: none</div>
+        <div class="status-pill" id="infra-status">Infra: idle</div>
+    </div>
+    <p>This page acts as a high-performance compute worker for a WebNET session.</p>
+    <pre id="log-box" class="log-box" aria-label="worker logs">Startup logs will appear here...</pre>
+
+    <script src="main.js"></script>
+</body>
+</html>
