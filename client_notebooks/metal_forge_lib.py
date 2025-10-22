@@ -94,7 +94,9 @@ class MetalForgeSession:
             job_id = str(len(self._job_results) + 1)
             job = {"job_id": job_id, "data": job_data}
             try:
-                print(f"Sending job {job_id} to worker: {job}")
+                # Log a safe preview of the job without dumping large base64 blobs
+                safe_job = self._preview_payload(job)
+                print(f"Sending job {job_id} to worker: {safe_job}")
                 await self._active_worker.send_text(json.dumps(job))
             except Exception as e:
                 # More helpful error for debugging if send fails
@@ -193,6 +195,27 @@ class MetalForgeSession:
             wait_for_result=False
         )
         print(" ONNX Model sent. The worker is now ready for inference.")
+
+    def _preview_payload(self, payload: dict, max_len: int = 200) -> dict:
+        """Return a copy of payload where long string values are truncated for safe logging.
+
+        - If a value is a string and longer than max_len, replace with a preview.
+        - Keeps nested dicts by recursion.
+        """
+        def truncate(value: str) -> str:
+            if len(value) <= max_len:
+                return value
+            # show start and end snippets to help identify content without dumping whole blob
+            return f"{value[:80]}...({len(value)} bytes)...{value[-80:]}"
+
+        def walk(obj):
+            if isinstance(obj, dict):
+                return {k: walk(v) for k, v in obj.items()}
+            if isinstance(obj, str):
+                return truncate(obj)
+            return obj
+
+        return walk(payload)
 
     def run(self, operation: str, data: dict,wait_for_result=True):
         """Submits a job to the connected worker and waits for the result."""
