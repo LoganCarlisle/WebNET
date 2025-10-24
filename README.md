@@ -1,6 +1,6 @@
 # WebNet
 
-**A framework to offload compute from cloud notebooks (Colab, Kaggle) to a distributed fleet of devices using webnet.**
+**A framework to offload compute from cloud notebooks (Colab, Kaggle) to different type of devices using webnet.**
 
 This project aims to build a connection between various research notebooks and the computing power of newer iphone chips, and other hardware, done via WebGPU.
 Early develoment is focused on using single chips, however hopefully in the future clusters of iphones/chips can be used for federated inferance then maybe for finetuning or maybe even training.
